@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Built-By: milan.milas
+Build-Jdk: 1.6.0_37
+Bundle-Version: 1.0.0
+Tool: Bnd-1.15.0
+Bundle-Name: A Camel Blueprint Route
+Bnd-LastModified: 1358169431635
+Created-By: Apache Maven Bundle Plugin
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: pocesbconsumer
+Import-Package: javax.jws,javax.xml.bind,javax.xml.bind.annotation,jav
+ ax.xml.datatype,javax.xml.namespace,javax.xml.ws;version="[2.2,3)",or
+ g.apache.activemq.camel.component,org.apache.camel;version="[2.9,3)",
+ org.osgi.service.blueprint;version="[1.0.0,2.0.0)",org.slf4j;version=
+ "[1.6,2)"
+

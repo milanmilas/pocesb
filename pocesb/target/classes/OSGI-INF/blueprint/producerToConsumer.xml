@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+       xmlns:camel="http://camel.apache.org/schema/blueprint"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+  <bean id="activemqc" class="org.apache.activemq.camel.component.ActiveMQComponent">
+    <property name="brokerURL" value="tcp://localhost:61616"/>
+    <property name="userName" value="smx"/>
+    <property name="password" value="smx"/>
+    <property name="clientId" value="1"/>
+    <property name="durableSubscriptionName" value="bar1"/>
+    <property name="acknowledgementModeName" value="AUTO_ACKNOWLEDGE"/>
+  </bean>
+  
+  <camelContext trace="false" xmlns="http://camel.apache.org/schema/blueprint">
+    <route id="ProducerToConsumer">
+        <from uri="activemqc:topic:Producer"/>
+        <multicast parallelProcessing="false">
+            <log message="${body}"/>
+            <to uri="activemqc:queue:Consumer?jmsMessageType=Text"/>
+        </multicast>
+    </route>
+</camelContext>
+
+</blueprint>

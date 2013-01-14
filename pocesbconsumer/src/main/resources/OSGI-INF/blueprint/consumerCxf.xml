@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+                  xmlns:cxf="http://cxf.apache.org/blueprint/core"
+           xmlns:camel="http://camel.apache.org/schema/blueprint"
+           xmlns:camelcxf="http://camel.apache.org/schema/blueprint/cxf"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+  <bean id="activemqconsumercxf" class="org.apache.activemq.camel.component.ActiveMQComponent">
+    <property name="brokerURL" value="tcp://localhost:61616"/>
+    <property name="userName" value="smx"/>
+    <property name="password" value="smx"/>
+  </bean>
+
+	<camelcxf:cxfEndpoint
+				id="customerServiceReal"
+				xmlns:c="http://allocatesoftware.uk"
+				address="http://localhost:53453/SubscriberService.svc"
+				endpointName="c:BasicHttpBinding_ISubscriberService"
+				serviceName="c:SubscriberService"
+				wsdlURL="wsdl/consumer.wsdl"
+	/>
+	
+	<bean id="ProcessSOAPBody" class="com.allocatesoftware.pocesb.ProcessSOAPBody">
+	</bean>
+
+  
+  <camelContext trace="false" xmlns="http://camel.apache.org/schema/blueprint">
+    <route id="consumerCxf">
+        <from uri="activemqconsumercxf:queue:Consumer?jmsMessageType=Text"/>
+        <log message="With Camel Headers"/>
+        <log message="${body}"/>
+        <log message="${headers}"/>
+        <removeHeaders pattern="*"/>
+        <setHeader headerName="operationName">
+            <constant>DispalyInformation</constant>
+        </setHeader>
+        <setHeader headerName="operationNamespace">
+            <constant>http://allocatesoftware.uk</constant>
+        </setHeader>
+        <setHeader headerName="SOAPAction">
+            <constant>http://allocatesoftware.uk/ISubscriberService/DispalyInformation</constant>
+        </setHeader>
+        <setHeader headerName="xmlns:all">
+            <constant>http://allocatesoftware.uk</constant>
+        </setHeader>
+        <process ref="ProcessSOAPBody"/>
+        <log message="Header and Body set:"/>
+        <log message="${body}"/>
+        <log message="${headers}"/>
+        <to uri="cxf:bean:customerServiceReal?dataFormat=PAYLOAD"/>
+        <log message="${body}"/>
+    </route>
+</camelContext>
+
+</blueprint>

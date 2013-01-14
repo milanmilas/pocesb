@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Export-Package: com.allocatesoftware.pocesb;uses:="javax.xml.bind.anno
+ tation,org.apache.camel,org.apache.cxf.message,org.slf4j,javax.jws.so
+ ap,javax.jws,javax.xml.ws,javax.xml.namespace"
+Built-By: milan.milas
+Build-Jdk: 1.6.0_37
+Bundle-Version: 1.0.0
+Tool: Bnd-1.15.0
+Bundle-Name: A Camel Blueprint Route
+Bnd-LastModified: 1358171626497
+Created-By: Apache Maven Bundle Plugin
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: pocesb
+Import-Package: javax.jws;version="[2.0,3)",javax.jws.soap;version="[2
+ .0,3)",javax.xml.bind.annotation,javax.xml.namespace,javax.xml.ws;ver
+ sion="[2.2,3)",org.apache.activemq.camel.component,org.apache.camel;v
+ ersion="[2.9,3)",org.apache.cxf.message;version="[2.4,3)",org.osgi.se
+ rvice.blueprint;version="[1.0.0,2.0.0)",org.slf4j;version="[1.6,2)"
+
