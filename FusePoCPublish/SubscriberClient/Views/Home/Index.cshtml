@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Subscriber";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+            </hgroup>
+            <p>
+               <select name="messagesListBox" id="messagesListBox"  multiple="multiple" size="20" style="width: 400px">
+                    <option value="Messages">Messages</option>
+                </select>
+
+            </p>
+        </div>
+    </section>
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+
+        function ticker() {
+
+            var url = "/SubscriberClient/Home/getMessage";
+            $.get(url, null, function(data) {
+                if (data != "-") {
+                    $('#messagesListBox').append('<option value="5">' + data + '</option>');
+                }
+            });
+
+            setTimeout("ticker()", 2000);
+        }
+
+        $(document).ready(function() {
+            ticker();
+        });
+    </script>
+}

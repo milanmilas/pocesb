@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FusePoCPublish", "FusePoCPublish\FusePoCPublish.csproj", "{7DB1F2BD-CE11-4718-B48D-8B4F9634A676}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubscriberClient", "SubscriberClient\SubscriberClient.csproj", "{48A04CFC-006F-42B3-A974-4E98CDB99B00}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7DB1F2BD-CE11-4718-B48D-8B4F9634A676}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DB1F2BD-CE11-4718-B48D-8B4F9634A676}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DB1F2BD-CE11-4718-B48D-8B4F9634A676}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DB1F2BD-CE11-4718-B48D-8B4F9634A676}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48A04CFC-006F-42B3-A974-4E98CDB99B00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48A04CFC-006F-42B3-A974-4E98CDB99B00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48A04CFC-006F-42B3-A974-4E98CDB99B00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48A04CFC-006F-42B3-A974-4E98CDB99B00}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

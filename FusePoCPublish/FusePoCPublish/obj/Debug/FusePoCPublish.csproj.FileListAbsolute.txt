@@ -1,0 +1,9 @@
+C:\Fuse\Projects\FusePoCPublish\FusePoCPublish\bin\Debug\FusePoCPublish.exe.config
+C:\Fuse\Projects\FusePoCPublish\FusePoCPublish\bin\Debug\FusePoCPublish.exe
+C:\Fuse\Projects\FusePoCPublish\FusePoCPublish\bin\Debug\FusePoCPublish.pdb
+C:\Fuse\Projects\FusePoCPublish\FusePoCPublish\obj\Debug\FusePoCPublish.csprojResolveAssemblyReference.cache
+C:\Fuse\Projects\FusePoCPublish\FusePoCPublish\obj\Debug\FusePoCPublish.FrmPublisherClient.resources
+C:\Fuse\Projects\FusePoCPublish\FusePoCPublish\obj\Debug\FusePoCPublish.Properties.Resources.resources
+C:\Fuse\Projects\FusePoCPublish\FusePoCPublish\obj\Debug\FusePoCPublish.csproj.GenerateResource.Cache
+C:\Fuse\Projects\FusePoCPublish\FusePoCPublish\obj\Debug\FusePoCPublish.exe
+C:\Fuse\Projects\FusePoCPublish\FusePoCPublish\obj\Debug\FusePoCPublish.pdb
