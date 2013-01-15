@@ -11,10 +11,6 @@
              http://cxf.apache.org/blueprint/jaxws http://cxf.apache.org/schemas/blueprint/jaxws.xsd
              http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/core.xsd
              ">
-
-  <bean id="helloBean" class="com.allocatesoftware.pocesb.HelloBean">
-      <property name="say" value="Hi from Camel"/>
-  </bean>
    
   <camelcxf:cxfEndpoint id="serviceEndpoint"
                      address="/pocesb/webservices/helloService"
@@ -25,8 +21,6 @@
   	<bean id="ProcessPOJOBody" class="com.allocatesoftware.pocesb.ProcessPOJOBody">
 	</bean>
 	
-	
-  
   <bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
     <property name="brokerURL" value="tcp://localhost:61616"/>
     <property name="userName" value="smx"/>
@@ -37,40 +31,26 @@
   <camelContext trace="false" id="blueprintContext" xmlns="http://camel.apache.org/schema/blueprint">
   
   <dataFormats>
-   <!--  <jaxb id="myJaxb" prettyPrint="true" contextPath="com.allocatesoftware.pocesb"/> -->
-     <json id="jack" library="Jackson" xmlns="http://camel.apache.org/schema/spring"/>
-</dataFormats>
-  
-
-  
+    <jaxb id="myJaxb" prettyPrint="true" contextPath="com.allocatesoftware.pocesb"/>
+  </dataFormats>
   
     <route id="producerCxf">
         <from uri="cxf:bean:serviceEndpoint?dataFormat=POJO"/>
-        <log message="${headers}"/>
-        <!-- <log message="${body}"/> -->
-     
-         <process ref="ProcessPOJOBody"/>
-         <log message="Converted body to Person"/>
-          <marshal  ref="jack"/>
-
-
-
- <!--        <convertBodyTo type="String"/> -->
+     	<convertBodyTo type="com.allocatesoftware.pocesb.Person"/>
+        <log message="Converted body to Person using convertBodyTo"/>
+        <marshal>
+         	 <jaxb prettyPrint="false" contextPath="com.allocatesoftware.pocesb"
+                partClass="com.allocatesoftware.pocesb.Person"
+                fragment="true"
+                partNamespace="{http://pocesb.allocatesoftware.com}Person" />
+        </marshal>
         <log message="Converted body to string"/>
-        <inOnly uri="activemq:topic:Producer?jmsMessageType=Text"/>
-        <log message="Before Transformation:"/>
-        <log message="${headers}"/>
-<!--         <log message="${body}"/> -->
-        <transform>
-            <constant>&lt;out&gt;1&lt;/out&gt;</constant>
-        </transform>
-        <log message="After Transformation:"/>
-        <log message="${headers}"/>
         <log message="${body}"/>
+        <inOnly uri="activemq:topic:Producer?jmsMessageType=Text"/>
+        <transform>
+            <constant>1</constant>
+        </transform>
     </route>
 </camelContext>
-
-<!--         <from uri="reportIncident"/>
-        <log message="The message contains ${body}"/> -->
 
 </blueprint>

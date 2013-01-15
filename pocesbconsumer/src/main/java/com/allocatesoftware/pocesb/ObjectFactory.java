@@ -30,14 +30,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Person }
-     * 
-     */
-    public Person createPerson() {
-        return new Person();
-    }
-
-    /**
      * Create an instance of {@link InputSayHi }
      * 
      */
@@ -51,6 +43,14 @@ public class ObjectFactory {
      */
     public OutputSayHi createOutputSayHi() {
         return new OutputSayHi();
+    }
+
+    /**
+     * Create an instance of {@link Person }
+     * 
+     */
+    public Person createPerson() {
+        return new Person();
     }
 
 }

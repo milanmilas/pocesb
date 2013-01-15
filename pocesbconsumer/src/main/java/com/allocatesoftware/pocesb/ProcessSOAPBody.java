@@ -101,9 +101,9 @@ public class ProcessSOAPBody implements Processor {
         // Set the response message, first element is the return value of the operation,
         // the others are the holders of method parameters
         
-        String body = exchange.getIn().getBody(String.class);
-        exchange.getOut().setBody("<DispalyInformation xmlns=\"http://allocatesoftware.uk\"><message xmlns=\"http://allocatesoftware.uk\">Hello"
-        							+body + "</message></DispalyInformation>");
+        Person body = exchange.getIn().getBody(Person.class);
+        exchange.getOut().setBody("<DispalyInformation xmlns=\"http://allocatesoftware.uk\"><message xmlns=\"http://allocatesoftware.uk\">Hello "
+        							+"Name: "+body.name + " Surname: "+body.surname + "</message></DispalyInformation>");
         //exchange.getOut().setBody(new Object[] {null, personId, ssn, name});
 
 	}

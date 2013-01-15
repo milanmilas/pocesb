@@ -16,7 +16,7 @@
 	<camelcxf:cxfEndpoint
 				id="customerServiceReal"
 				xmlns:c="http://allocatesoftware.uk"
-				address="http://localhost:53453/SubscriberService.svc"
+				address="http://localhost/SubscriberClient/SubscriberService.svc"
 				endpointName="c:BasicHttpBinding_ISubscriberService"
 				serviceName="c:SubscriberService"
 				wsdlURL="wsdl/consumer.wsdl"
@@ -45,6 +45,13 @@
         <setHeader headerName="xmlns:all">
             <constant>http://allocatesoftware.uk</constant>
         </setHeader>
+         <unmarshal>
+         	 <jaxb prettyPrint="false" contextPath="com.allocatesoftware.pocesb"
+                partClass="com.allocatesoftware.pocesb.Person"
+                fragment="true"
+                partNamespace="{http://pocesb.allocatesoftware.com}Person" />
+          </unmarshal>
+        <log message="Body converted to Person object calling SOAP processing"/>
         <process ref="ProcessSOAPBody"/>
         <log message="Header and Body set:"/>
         <log message="${body}"/>
