@@ -34,19 +34,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DispalyInformation }
-     * 
-     */
-    public DispalyInformation createDispalyInformation() {
-        return new DispalyInformation();
-    }
-
-    /**
      * Create an instance of {@link DispalyInformationResponse }
      * 
      */
     public DispalyInformationResponse createDispalyInformationResponse() {
         return new DispalyInformationResponse();
+    }
+
+    /**
+     * Create an instance of {@link DispalyInformation }
+     * 
+     */
+    public DispalyInformation createDispalyInformation() {
+        return new DispalyInformation();
     }
 
     /**

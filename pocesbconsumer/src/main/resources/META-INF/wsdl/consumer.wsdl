@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<wsdl:definitions xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://allocatesoftware.uk" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SubscriberService" targetNamespace="http://allocatesoftware.uk">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://allocatesoftware.uk/Imports">
+      <xsd:import namespace="http://allocatesoftware.uk" schemaLocation="http://localhost/SubscriberClient/SubscriberService.svc?xsd=xsd0"/>
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" schemaLocation="http://localhost/SubscriberClient/SubscriberService.svc?xsd=xsd1"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISubscriberService_DispalyInformation_InputMessage">
+    <wsdl:part element="tns:DispalyInformation" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ISubscriberService_DispalyInformation_OutputMessage">
+    <wsdl:part element="tns:DispalyInformationResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="ISubscriberService">
+    <wsdl:operation name="DispalyInformation">
+      <wsdl:input message="tns:ISubscriberService_DispalyInformation_InputMessage" wsaw:Action="http://allocatesoftware.uk/ISubscriberService/DispalyInformation"/>
+      <wsdl:output message="tns:ISubscriberService_DispalyInformation_OutputMessage" wsaw:Action="http://allocatesoftware.uk/ISubscriberService/DispalyInformationResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ISubscriberService" type="tns:ISubscriberService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="DispalyInformation">
+      <soap:operation soapAction="http://allocatesoftware.uk/ISubscriberService/DispalyInformation" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SubscriberService">
+    <wsdl:port binding="tns:BasicHttpBinding_ISubscriberService" name="BasicHttpBinding_ISubscriberService">
+      <soap:address location="http://localhost/SubscriberClient/SubscriberService.svc"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -29,24 +29,22 @@
   
 
   <camelContext trace="false" id="blueprintContext" xmlns="http://camel.apache.org/schema/blueprint">
-  
-  <dataFormats>
-    <jaxb id="myJaxb" prettyPrint="true" contextPath="com.allocatesoftware.pocesb"/>
-  </dataFormats>
-  
+    <dataFormats>
+        <jaxb prettyPrint="true" contextPath="com.allocatesoftware.pocesb" id="myJaxb"/>
+    </dataFormats>
     <route id="producerCxf">
         <from uri="cxf:bean:serviceEndpoint?dataFormat=POJO"/>
-     	<convertBodyTo type="com.allocatesoftware.pocesb.Person"/>
+        <convertBodyTo type="com.allocatesoftware.pocesb.Person"/>
         <log message="Converted body to Person using convertBodyTo"/>
         <marshal>
-         	 <jaxb prettyPrint="false" contextPath="com.allocatesoftware.pocesb"
-                partClass="com.allocatesoftware.pocesb.Person"
-                fragment="true"
-                partNamespace="{http://pocesb.allocatesoftware.com}Person" />
+            <jaxb partNamespace="{http://pocesb.allocatesoftware.com}Person" 
+	              partClass="com.allocatesoftware.pocesb.Person" 
+	              fragment="true" prettyPrint="false" 
+	              contextPath="com.allocatesoftware.pocesb"/>
         </marshal>
         <log message="Converted body to string"/>
         <log message="${body}"/>
-        <inOnly uri="activemq:topic:Producer?jmsMessageType=Text"/>
+        <inOnly uri="activemq:topic:Producer"/>
         <transform>
             <constant>1</constant>
         </transform>

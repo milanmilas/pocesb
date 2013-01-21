@@ -172,9 +172,6 @@
 
   </dependencies>
   
-
-  
-
   <build>
     <defaultGoal>install</defaultGoal>
 
@@ -229,7 +226,7 @@
               <sourceRoot>${basedir}/target/generated-sources/jaxws</sourceRoot>
               <wsdlOptions>
                 <wsdlOption>
-                  <wsdl>${basedir}/wsdl/consumer.wsdl</wsdl>
+                  <wsdl>${basedir}/src/main/resources/META-INF/wsdl/consumer.wsdl</wsdl>
                 </wsdlOption>
               </wsdlOptions>
             </configuration>
